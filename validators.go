@@ -37,11 +37,11 @@ func (v *Validator) CheckHostInWhiteList(requestUrl string) error {
 
 // Validates if new request size is valid or not
 func (v *Validator) CheckRequestNewSize(s *Size) error {
-	if s.Height >= v.config.SizeLimits.Height {
+	if s.Height > v.config.SizeLimits.Height {
 		return error(fmt.Errorf("Height cannot be higher than %d", v.config.SizeLimits.Height))
 	}
 
-	if s.Width >= v.config.SizeLimits.Width ||  s.Height >= v.config.SizeLimits.Height {
+	if s.Width > v.config.SizeLimits.Width ||  s.Height >= v.config.SizeLimits.Height {
 		return error(fmt.Errorf("Width cannot be higher than %d", v.config.SizeLimits.Width))
 	}
 
